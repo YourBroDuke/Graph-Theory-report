@@ -1,0 +1,58 @@
+the algorithm:
+we add the minimum weight edge that keeps the subgraph acyclic in each step.
+Lemma:
+let S be the set of edges that I have been selecting up to now.
+in the algorithm. So let S consist of the first m edges.
+there exists a minimum spanning tree T that has the vertex set V and an edge set E.
+T is the minimum spanning tree for the graph G such that S is actually a subset of the edges in it.
+Theorem:
+for any connected weighted graph G, the algorithm
+creates a minimum spanning tree.
+proof:
+I will suppose that the the number of vertices is actually equal to n. And if we want to show that we are getting to a minimum spanning tree, we want to first of all show that the algorithm is able to choose at least n minus 1 edges
+(Because a tree has n minus 1 edges) 
+proof of "the algorithm should not get stuck":
+So suppose we have less than n minus 1 edges picked.
+Well, there exists as edge in E minus S without creating a cycle.
+We know that S is a subset of all the edges.We know E has successfully n-1 edges. So there's at least one edge that is an element in E, but not in S.
+And for that particular edge,we know it will not create a cycle in S. Because otherwise, the E would have a cycle.
+So we know that the algorithm can always select an edge such that's no cycle is created. So we can keep on going in the algorithm until at least n minus 1 edges are selected.
+What happens if we have n minus 1 edges?
+So once n minus 1 edges have been chosen, well, then S has exactly n minus 1 edges. because it's a tree. They are subsets of one another. So they must be equal to one another.So essentially what we have here is that S exactly defines the minimum spanning tree that we are looking for. So the algorithm at the very end. So if this lemma really holds true, then this theorem can be shown.
+
+then proof the lemma:
+Use induction
+induction hypothesis:
+for all G and for all sets S that consists of the first m selected edges, there exists a minimum spanning tree of G such that S is a subset of E.
+base case: m = 0
+if we have zero selected edges, then S is the empty set.
+(Because we showed that for all graphs G, there exists a spanning tree. And if there exists a spanning tree, there exists a minimum weight spanning
+tree.)
+So m equals 0 implies that S is equal to the empty set. So that meansthat S is definitely a subset for any set of edges of a minimum weight spanning tree.
+
+Inductive step:
+we assume that P(m) holds.
+let e denote the edge that I added in the m plus 1 step
+And let S be the first m selected edges.
+We know that there exists a minimum spanning tree such that S is a subset of the edges.
+So let's just pick one such minimum spanning tree. So let T star be such a minimum spanning tree. It has edges E star.
+then S is actually a subset of E star we want to show that there is a minimum spanning tree such that the edge set of this minimum spanning tree contains both S and also e.
+then of course, S together with E is also a subset of E star. And that means that we are done, in this particular
+case.
+next case:(more difficult)
+If we assume that e is not in E star.
+we know that the algorithm, from its
+definition, implies that as together with e, actually has no cycle.then select n plus 1 edge.There is no cycle
+if S with e has no cycle, but E star with e has a cycle, and S is contained in E star, well there's only one possibility. And that is that this cycle must have an edge, e prime, that is in E star minus S.(Because if it would not have such an edge, then all the edges of the cycle must be located in S together with E. But S together with E has no cycle. So that's not possible. So this cycle must have and edge e prime that is outside S, but still in E star.)
+So we can find one over here. e prime can be this particular edge. So e prime is in E star. But it is not already selected in S.
+The trick: the idea is to swap e and e prime.
+Because e prime does not create a cycle with S. So this really implies therefore that the weight of e is at most the weight of e prime. Because the algorithm always chooses the minimum weight. And it can choose between e or e prime, but it chose e. So the weight of e must be less than the weight of e prime
+Well, let T double star be
+equal to V with the edge set E double star where E double star is really equal to the
+original set E star. But we take out of this e prime. So this one is taken out of the minimum
+spanning tree. And we add e in here.//put e into the MST
+T double star is also connected.Well, since e prime and e are on the same cycle. So it remains connected.
+And finally, we also know that T double star actually contains all the vertices in G.So all these three together with prove that T double star is a spanning tree of G, because it's acyclic, connected, contains all the vertices.
+So that means that the weight of T double star is at most
+that of the weight of T star. We also know that T star is a minimum spanning tree. So it also has a minimum weight. So T double star is a minimum spanning tree.
+So now we finally have figured out that the lemma is true. And now we showed already how to use the lemma in our proof for this particular theorem.
